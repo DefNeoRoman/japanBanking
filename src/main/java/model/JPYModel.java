@@ -1,7 +1,7 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sun.istack.internal.NotNull;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,21 +20,16 @@ public class JPYModel implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "num_code",columnDefinition = "INTEGER default 392")
-    @NotNull
     private Integer numCode;
     @Column(name = "char_code",columnDefinition = "VARCHAR(30) default 'JPY'")
-    @NotNull
     private String charCode;
 
     private Integer nominal;
     @Column(name = "name",columnDefinition = "VARCHAR(30) default 'японская йена'")
-    @NotNull
     private String name;
 
     private Double value;
-
     @Column(name = "time_receipt", columnDefinition = "timestamp default now()")
-    @NotNull
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date timeReceipt;
     public JPYModel() {

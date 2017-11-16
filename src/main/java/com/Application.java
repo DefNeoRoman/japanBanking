@@ -21,7 +21,7 @@ import service.JpyService;
 @EnableJpaRepositories("repository")
 public class Application {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
 
 
