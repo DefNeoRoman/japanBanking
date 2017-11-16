@@ -18,19 +18,9 @@ public class JpyService {
 
         repository.save(new JPYModel(12,45.90));
     }
-    public List<JPYModel> getAll() throws Exception {
+    public List<JPYModel> getAll(){
 
-        Document doc = loadTestDocument("http://cbr.ru/scripts/XML_daily.asp");
-        System.out.println(doc);
-        doc = loadTestDocument("http://localhost/array.xml");
-        System.out.println(doc);
         return repository.findAll();
     }
-    private static Document loadTestDocument(String url) throws Exception {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        factory.setNamespaceAware(true);
-        return factory.newDocumentBuilder().parse(new URL(url).openStream());
-    }
-
 
 }
