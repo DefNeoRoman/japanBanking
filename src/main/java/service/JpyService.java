@@ -4,9 +4,6 @@ import model.JPYModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.JPYRepository;
-import java.net.URL;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
 import java.util.List;
 
 @Service

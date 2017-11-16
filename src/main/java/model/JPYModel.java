@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -18,28 +17,37 @@ import java.util.Date;
 @Entity
 @Table(name = "jpymodel")
 @XmlRootElement(name = "Valute")
-@XmlType(propOrder = {"numCode", "charCode", "nominal","value"})
-public class JPYModel implements Serializable{
+@XmlAccessorType(XmlAccessType.FIELD)
+public class JPYModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "num_code",columnDefinition = "INTEGER default 392")
+    @Column(name = "num_code", columnDefinition = "INTEGER default 392")
+    @XmlElement(name = "NumCode")
     private Integer numCode;
-    @Column(name = "char_code",columnDefinition = "VARCHAR(30) default 'JPY'")
+    @Column(name = "char_code", columnDefinition = "VARCHAR(30) default 'JPY'")
+    @XmlElement(name = "CharCode")
     private String charCode;
-
+    @XmlElement(name = "Nominal")
     private Integer nominal;
-    @Column(name = "name",columnDefinition = "VARCHAR(30) default 'японская йена'")
+    @Column(name = "name", columnDefinition = "VARCHAR(30) default 'японская йена'")
+    @XmlElement(name = "Name")
     private String name;
-
+    @XmlAttribute(name = "ID")
+    @Transient
+    private String valute_id;
+    @XmlElement(name = "Value")
     private Double value;
     @Column(name = "time_receipt", columnDefinition = "timestamp default now()")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @XmlTransient
     private Date timeReceipt;
+
     public JPYModel() {
-        this.numCode=392;
-        this.name="йена";
-        this.charCode="JPY";
+        this.numCode = 392;
+        this.name = "йена";
+        this.charCode = "JPY";
+        this.timeReceipt = new Date();
     }
 
     public JPYModel(Integer nominal, Double value) {
@@ -47,7 +55,6 @@ public class JPYModel implements Serializable{
         this.nominal = nominal;
         this.value = value;
     }
-
 
 
     public Integer getNumCode() {
@@ -96,6 +103,14 @@ public class JPYModel implements Serializable{
 
     public void setTimeReceipt(Date timeReceipt) {
         this.timeReceipt = timeReceipt;
+    }
+
+    public String getValute_id() {
+        return valute_id;
+    }
+
+    public void setValute_id(String valute_id) {
+        this.valute_id = valute_id;
     }
 
     @Override
