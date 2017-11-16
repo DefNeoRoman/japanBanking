@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -15,6 +17,8 @@ import java.util.Date;
 //<Value>53,3673</Value>
 @Entity
 @Table(name = "jpymodel")
+@XmlRootElement(name = "Valute")
+@XmlType(propOrder = {"numCode", "charCode", "nominal","value"})
 public class JPYModel implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
