@@ -9,11 +9,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-//    <NumCode>392</NumCode>
-//<CharCode>JPY</CharCode>
-//<Nominal>100</Nominal>
-//    <Name>Японских иен</Name>
-//<Value>53,3673</Value>
 @Entity
 @Table(name = "jpymodel")
 @XmlRootElement(name = "Valute")
