@@ -1,4 +1,4 @@
-package com;
+package sandbox;
 
 import model.JPYModel;
 
@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class Worker {
     public static void main(String[] args) {
         // определяем название файла, куда будем сохранять
-        String fileName = "E:\\Roman\\DTT\\projects\\japanBanking\\res.xml";
+        String fileName = "D:\\forJava\\examples\\japanBanking\\res.xml";
 
         //создаем объект Student с какими-то данными
         JPYModel jPYModel = new JPYModel();
