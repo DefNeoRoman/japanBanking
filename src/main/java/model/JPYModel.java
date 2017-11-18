@@ -11,31 +11,29 @@ import java.util.Date;
 
 @Entity
 @Table(name = "jpymodel")
-@XmlRootElement(name = "Valute")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class JPYModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "num_code", columnDefinition = "INTEGER default 392")
-    @XmlElement(name = "NumCode")
+
     private Integer numCode;
     @Column(name = "char_code", columnDefinition = "VARCHAR(30) default 'JPY'")
-    @XmlElement(name = "CharCode")
+
     private String charCode;
-    @XmlElement(name = "Nominal")
+
     private Integer nominal;
     @Column(name = "name", columnDefinition = "VARCHAR(30) default 'японская йена'")
-    @XmlElement(name = "Name")
+
     private String name;
-    @XmlAttribute(name = "ID")
+
     @Transient
     private String valute_id;
-    @XmlElement(name = "Value")
+
     private Double value;
     @Column(name = "time_receipt", columnDefinition = "timestamp default now()")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @XmlTransient
+
     private Date timeReceipt;
 
     public JPYModel() {

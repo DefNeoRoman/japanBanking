@@ -1,6 +1,8 @@
 package web;
 
 import model.JPYModel;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +20,13 @@ public class MainJapanBankingController {
         return service.getLast();
     }
     @GetMapping(value = "/buy", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Map<String,String> buy(@RequestParam("sum") Double sum) {
+    public Map<String,String> buy(@RequestParam(value = "sum") String sum) {
         JPYModel jpyModel = service.getLast();
         Map<String,String> resultMap = new HashMap<>();
-        if(sum != null && jpyModel != null){
+        if((sum != null && StringUtils.isNumeric(sum)) && jpyModel != null){
             Double currentCourse = jpyModel.getValue();
-            resultMap.put("data",Double.toString(sum/currentCourse));
+            Double currDouble = Double.parseDouble(sum);
+            resultMap.put("data",Double.toString(currDouble/currentCourse));
             resultMap.put("status","OK");
 
         }else{
@@ -36,12 +39,13 @@ public class MainJapanBankingController {
 
     }
     @GetMapping(value = "/sell", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Map<String,String> sell (@RequestParam("sum") Double sum) {
+    public Map<String,String> sell (@RequestParam(value = "sum") String sum) {
         JPYModel jpyModel = service.getLast();
         Map<String,String> resultMap = new HashMap<>();
-        if(sum != null && jpyModel != null){
+        if((sum != null && StringUtils.isNumeric(sum)) && jpyModel != null){
             Double currentCourse = jpyModel.getValue();
-            resultMap.put("data",Double.toString(sum*currentCourse));
+            Double currDouble = Double.parseDouble(sum);
+            resultMap.put("data",Double.toString(currDouble*currentCourse));
             resultMap.put("status","OK");
 
         }else{
