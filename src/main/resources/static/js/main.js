@@ -5,19 +5,24 @@ var value =       $(".value");
 var htmlString = 'Текущий курс:'+ '<br>';
 $(document).ready(function() {
 $.get('/getLast', function (data) {
-  nominal.append(data.nominal);
+
   value.append(data.value);
-    htmlString += 'Nominal ='+nominal.prop("outerHTML") + 'Value ='+value.prop("outerHTML");
+    htmlString += value.prop("outerHTML");
     currYen.html(htmlString);
 })});
 
 function buy() {
-    $.get('/getLast', function (data) {
 
+    var sum= $('#buyInput').val();
+    console.log(sum);
+    $.get('/buy?sum='+sum, function (data) {
+        $('#buyResult').html('вы купили'+data+'йен')
     });
 }
 function sell() {
-    $.get('/getLast', function (data) {
-
+    var sum=$('#sellInput').val();
+   console.log(sum);
+    $.get('/sell?sum='+sum, function (data) {
+        $('#sellResult').html('вы получили'+data +'рублей')
     });
 }

@@ -40,15 +40,21 @@
       <span class="input-group-btn">
         <button class="btn btn-secondary" type="button" onclick="buy()">Buy</button>
       </span>
-                <input type="text" class="form-control" placeholder="Value for buy">
+                <input type="text" id="buyInput" class="form-control" placeholder="Value for buy" value="">
+            </div>
+            <div id="buyResult" class="result">
+
             </div>
         </div>
         <div class="col-md-6">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Value for sell">
+                <input type="text" id="sellInput" class="form-control" placeholder="Value for sell" value="">
                 <span class="input-group-btn">
         <button class="btn btn-secondary" type="button" onclick="sell()">Sell</button>
       </span>
+            </div>
+            <div id="sellResult" class="result">
+
             </div>
         </div>
     </div>
